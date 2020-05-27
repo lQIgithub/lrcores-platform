@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lrcores-admin/lrcores-admin.iml" filepath="$PROJECT_DIR$/lrcores-admin/lrcores-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lrcores-api/lrcores-api.iml" filepath="$PROJECT_DIR$/lrcores-api/lrcores-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lrcores-common/lrcores-common.iml" filepath="$PROJECT_DIR$/lrcores-common/lrcores-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lrcores-dynamic-datasource/lrcores-dynamic-datasource.iml" filepath="$PROJECT_DIR$/lrcores-dynamic-datasource/lrcores-dynamic-datasource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lrcores-generator/lrcores-generator.iml" filepath="$PROJECT_DIR$/lrcores-generator/lrcores-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lrcores-platform.iml" filepath="$PROJECT_DIR$/lrcores-platform.iml" />
+    </modules>
+  </component>
+</project>

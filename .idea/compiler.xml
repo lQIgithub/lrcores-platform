@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lrcores-common" />
+        <module name="lrcores-admin" />
+        <module name="lrcores-generator" />
+        <module name="lrcores-api" />
+        <module name="lrcores-dynamic-datasource" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lrcores-admin" target="1.8" />
+      <module name="lrcores-api" target="1.8" />
+      <module name="lrcores-common" target="1.8" />
+      <module name="lrcores-dynamic-datasource" target="1.8" />
+      <module name="lrcores-generator" target="1.8" />
+      <module name="lrcores-platform" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="lrcores-admin" options="-parameters" />
+      <module name="lrcores-api" options="-parameters" />
+      <module name="lrcores-common" options="-parameters" />
+      <module name="lrcores-dynamic-datasource" options="-parameters" />
+      <module name="lrcores-generator" options="-parameters" />
+    </option>
+  </component>
+</project>
