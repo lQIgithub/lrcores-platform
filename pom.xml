@@ -21,6 +21,7 @@
         <module>lrcores-dynamic-datasource</module>
         <module>lrcores-admin</module>
         <module>lrcores-api</module>
+        <module>lrcores-excel</module>
     </modules>
 
 

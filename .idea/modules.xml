@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/lrcores-api/lrcores-api.iml" filepath="$PROJECT_DIR$/lrcores-api/lrcores-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/lrcores-common/lrcores-common.iml" filepath="$PROJECT_DIR$/lrcores-common/lrcores-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/lrcores-dynamic-datasource/lrcores-dynamic-datasource.iml" filepath="$PROJECT_DIR$/lrcores-dynamic-datasource/lrcores-dynamic-datasource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lrcores-excel/lrcores-excel.iml" filepath="$PROJECT_DIR$/lrcores-excel/lrcores-excel.iml" />
       <module fileurl="file://$PROJECT_DIR$/lrcores-generator/lrcores-generator.iml" filepath="$PROJECT_DIR$/lrcores-generator/lrcores-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/lrcores-platform.iml" filepath="$PROJECT_DIR$/lrcores-platform.iml" />
     </modules>
