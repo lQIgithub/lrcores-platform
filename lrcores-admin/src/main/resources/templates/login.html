@@ -47,8 +47,8 @@
         <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="refreshCode">点击刷新</a>
       </div>
-      
-      
+
+
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
@@ -105,7 +105,7 @@ var vm = new Vue({
 					}else{
 						vm.error = true;
 						vm.errorMsg = result.msg;
-						
+
 						vm.refreshCode();
 					}
 				}
