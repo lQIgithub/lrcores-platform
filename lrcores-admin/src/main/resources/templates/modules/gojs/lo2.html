@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+</head>
+<body>
+
+
+<!-- The DIV for a Diagram needs an explicit size or else we will not see anything.
+     In this case we also add a background color so we can see that area. -->
+<div id="myDiagramDiv"
+     style="width:768px; height:550px; background-color: #DAE4E4;"></div>
+
+
+</body>
+
+
+<script>
+
+/*
+  A Node of "Horizontal" Panel type, meaning that its elements will be laid out horizontally side-by-side. It has two elements:
+        A Picture for the portrait, with the image source data bound
+        A TextBlock for the name, with the text data bound
+  */
+    var $ = go.GraphObject.make;
+    var myDiagram =
+        $(go.Diagram, "myDiagramDiv",
+            {
+                // enable Ctrl-Z to undo and Ctrl-Y to redo
+                "undoManager.isEnabled": true
+            });
+
+//    define a simple node template
+    myDiagram.nodeTemplate=
+        $(go.Node,"Horizontal",
+            //the entire node will have a light-blue background
+            {background: "#44CCFF"},
+            $(go.Picture,
+                //pictures should normally have an explicit width and heigh.
+                //this picture has a red background, only visible when there is no source set
+                //or when the image is partially transparent
+                {margin: 10, width:50,height: 50, background: "red"},
+                new go.Binding("source")
+            ),
+            $(go.TextBlock,
+                "Default Text",  // the initial value for TextBlock.text
+                // some room around the text, a larger font, and a white stroke:
+                { margin: 12, stroke: "white", font: "bold 16px sans-serif" },
+                // TextBlock.text is data bound to the "name" property of the model data
+                new go.Binding("text", "name")
+            )
+        );
+var model = $(go.Model);
+model.nodeDataArray =
+    [ // note that each node data object holds whatever properties it needs;
+      // for this app we add the "name" and "source" properties
+        { name: "Don Meow", source: "${request.contextPath}/statics/images/cat1.png" },
+        { name: "Copricat", source: "${request.contextPath}/statics/images/cat2.png" },
+        { name: "Demeter",  source: "${request.contextPath}/statics/images/cat3.png" },
+        { /* Empty node data */  }
+    ];
+
+
+
+myDiagram.model = model;
+</script>
+</html>

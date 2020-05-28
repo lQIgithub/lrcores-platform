@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+</head>
+<body>
+
+
+<!-- The DIV for a Diagram needs an explicit size or else we will not see anything.
+     In this case we also add a background color so we can see that area. -->
+<div id="myDiagramDiv"
+     style="width:768px; height:550px; background-color: #DAE4E4;"></div>
+
+
+</body>
+
+
+<script>
+    var $ = go.GraphObject.make;
+    var myDiagram =
+        $(go.Diagram, "myDiagramDiv",
+            {
+                // enable Ctrl-Z to undo and Ctrl-Y to redo
+                "undoManager.isEnabled": true
+            });
+
+    var myModel = $(go.Model);
+    // for each object in this Array, the Diagram creates a Node to represent it
+    myModel.nodeDataArray = [
+        { key: "Alpha" },
+        { key: "Beta" },
+        { key: "Gamma" }
+    ];
+    myDiagram.model = myModel;
+
+
+    /*The default Node template is simple: A Node which contains one TextBlock. There is a data binding between
+    a TextBlock's text property and the model data's key property. In code, the template looks something like this:*/
+    // myDiagram.nodeTemplate =
+    //     $(go.Node,
+    //         $(go.TextBlock,
+    //             // TextBlock.text is bound to Node.data.key
+    //             new go.Binding("text", "key"))
+    //     );
+
+
+    /*the skeleton of a Node template will look something like this:*/
+    myDiagram.nodeTemplate = $(go.Node,"Vertical", // second argument of a Node (or any Panel) can be a Panel type
+        /* set Node properties here */
+        { // the Node.location point will be at the center of each node
+            locationSpot: go.Spot.Center
+        },
+        /* add Bindings here */
+        // example Node binding sets Node.location to the value of Node.data.loc
+        new go.Binding("location", "loc"),
+        /* add GraphObjects contained within the Node */
+        // this Shape will be vertically above the TextBlock
+        $(go.Shape,
+            "RoundedRectangle", // string argument can name a predefined figure
+            { /* set Shape properties here */ },
+            // example Shape binding sets Shape.figure to the value of Node.data.fig
+            new go.Binding("figure", "fig")),
+        $(go.TextBlock,
+            "我是block",  // string argument can be initial text string
+            { /* set TextBlock properties here */ },
+            // example TextBlock binding sets TextBlock.text to the value of Node.data.text
+            new go.Binding("text"))
+
+    );
+
+</script>
+</html>

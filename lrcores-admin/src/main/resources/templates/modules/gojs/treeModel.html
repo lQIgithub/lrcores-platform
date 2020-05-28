@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+</head>
+<body>
+
+
+<!-- The DIV for a Diagram needs an explicit size or else we will not see anything.
+     In this case we also add a background color so we can see that area. -->
+<div id="myDiagramDiv"
+     style="width:768px; height:550px; background-color: #DAE4E4;"></div>
+
+
+</body>
+
+
+<script>
+
+    /*
+      A Node of "Horizontal" Panel type, meaning that its elements will be laid out horizontally side-by-side. It has two elements:
+            A Picture for the portrait, with the image source data bound
+            A TextBlock for the name, with the text data bound
+      */
+    var $ = go.GraphObject.make;
+    var myDiagram =
+        $(go.Diagram, "myDiagramDiv",
+            {
+                // enable Ctrl-Z to undo and Ctrl-Y to redo
+                "undoManager.isEnabled": true,
+                layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
+                    {angle: 90, layerSpacing: 35})
+            });
+
+    //    define a simple node template
+    myDiagram.nodeTemplate =
+        $(go.Node, "Horizontal",
+            //the entire node will have a light-blue background
+            {background: "#44CCFF"},
+            $(go.Picture,
+                //pictures should normally have an explicit width and heigh.
+                //this picture has a red background, only visible when there is no source set
+                //or when the image is partially transparent
+                {margin: 10, width: 50, height: 50, background: "red"},
+                new go.Binding("source")
+            ),
+            $(go.TextBlock,
+                "Default Text",  // the initial value for TextBlock.text
+                // some room around the text, a larger font, and a white stroke:
+                {margin: 12, stroke: "white", font: "bold 16px sans-serif"},
+                // TextBlock.text is data bound to the "name" property of the model data
+                new go.Binding("text", "name")
+            )
+        );
+
+    // define a Link template that routes orthogonally, with no arrowhead(箭头)
+    myDiagram.linkTemplate =
+        $(go.Link,
+            { routing: go.Link.Orthogonal, corner: 5 },
+            $(go.Shape, // the link's path shape
+                { strokeWidth: 3, stroke: "#555" }));
+
+
+    var model = $(go.TreeModel);
+    model.nodeDataArray =
+        [ // the "key" and "parent" property names are required,
+            // but you can add whatever data properties you need for your app
+            {key: "1", name: "Don Meow", source: "${request.contextPath}/statics/images/cat1.png"},
+            {key: "2", parent: "1", name: "Demeter", source: "${request.contextPath}/statics/images/cat2.png"},
+            {key: "3", parent: "1", name: "Copricat", source: "${request.contextPath}/statics/images/cat3.png"},
+            {key: "4", parent: "3", name: "Jellylorum", source: "${request.contextPath}/statics/images/cat4.png"},
+            {key: "5", parent: "3", name: "Alonzo", source: "${request.contextPath}/statics/images/cat5.png"},
+            {key: "6", parent: "2", name: "Munkustrap", source: "${request.contextPath}/statics/images/cat6.png"}
+        ];
+    myDiagram.model = model;
+</script>
+</html>
